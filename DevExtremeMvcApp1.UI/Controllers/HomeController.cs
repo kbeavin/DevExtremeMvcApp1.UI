@@ -9,5 +9,10 @@ namespace DevExtremeMvcApp1_UI.Controllers {
         public ActionResult Index() {
             return View();
         }
+
+        public ActionResult MileageReport()
+        {
+            return View();
+        }
     }
 }

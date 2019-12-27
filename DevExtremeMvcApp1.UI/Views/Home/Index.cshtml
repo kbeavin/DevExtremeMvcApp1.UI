@@ -8,7 +8,11 @@
 
 @(Html.DevExtreme().DataGrid<invoiceheader>()
     .ShowBorders(true)
-    .DataSource(d => d.WebApi().Controller("Orders").Key("ivh_hdrnumber"))
+    .DataSource(d => d.WebApi()
+        .Controller("Orders")
+        .LoadAction("Invoices")
+        .Key("ivh_hdrnumber"))
+    .LoadPanel(l => l.Enabled(false))
     .Columns(columns => {
         columns.AddFor(m => m.ivh_hdrnumber);
         columns.AddFor(m => m.ivh_invoicestatus);
@@ -30,4 +34,51 @@
             groupItems.Add().SummaryType(SummaryType.Count);
         })
     )
+    .MasterDetail(md => md
+        .Enabled(true)
+        .Template(new TemplateName("detailContent"))
+    )
 )
+
+@using (Html.DevExtreme().NamedTemplate("detailContent"))
+{
+    @(Html.DevExtreme().TabPanel()
+        .Items(items =>
+        {
+            items.Add()
+                .Title("Invoice Details")
+                .Template(new TemplateName("tab1Content"))
+                .Option("masterGridData", new { id = new JS("data.ivh_hdrnumber") });
+
+            items.Add()
+                .Title("Notes");
+        })
+    )
+}
+
+@using (Html.DevExtreme().NamedTemplate("tab1Content"))
+{
+    @(Html.DevExtreme().DataGrid<invoicedetail>()
+        .ShowBorders(true)
+        .DataSource(d => d.WebApi()
+            .Controller("Orders")
+            .LoadAction("InvoiceDetails")
+            .LoadParams(new {
+                id = new JS("masterGridData.id")
+            })
+        )
+        .LoadPanel(l => l.Enabled(false))
+        .Columns(columns =>
+        {
+            columns.AddFor(m => m.ivd_number);
+            columns.AddFor(m => m.fgt_number);
+            columns.AddFor(m => m.fgt_supplier);
+            columns.AddFor(m => m.ivd_bolid);
+            columns.AddFor(m => m.ivd_ord_number);
+        })
+        .MasterDetail(md => md
+            .Enabled(true)
+            .Template(new TemplateName("detailContent"))
+    )
+    )
+}
