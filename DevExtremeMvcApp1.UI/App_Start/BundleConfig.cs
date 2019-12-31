@@ -28,6 +28,10 @@ namespace DevExtremeMvcApp1_UI {
             styleBundle
                 .Include("~/Content/Site.css");
 
+            // Custom Carter styles
+            styleBundle
+                .Include("~/Content/main/main.css");
+
             bundles.Add(scriptBundle);
             bundles.Add(styleBundle);
 

@@ -156,6 +156,8 @@
     <Content Include="Content\dx.softblue.css" />
     <Content Include="Content\images\PartlyCloudy.png" />
     <Content Include="Content\images\Rain.png" />
+    <Content Include="Content\main\main.css" />
+    <Content Include="Content\main\main.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\images\Sunny.png" />
     <Content Include="Content\images\Storm.png" />
@@ -213,6 +215,17 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Content\images\US dotted map.ai" />
+    <Content Include="Content\sass\base\_base.scss" />
+    <Content Include="Content\sass\base\_variables.scss" />
+    <Content Include="Content\sass\components\_filter.scss" />
+    <Content Include="Content\sass\components\_indicator.scss" />
+    <Content Include="Content\sass\components\_lib_overrides.scss" />
+    <Content Include="Content\sass\components\_printpreview.scss" />
+    <Content Include="Content\sass\main.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
