@@ -1,21 +1,22 @@
-@using DevExtremeMvcApp1_UI.Data
+﻿@using DevExtremeMvcApp1_UI.Data
 
-<h2>Invoices</h2>
+<h2>Orders</h2>
 
-@(Html.DevExtreme().DataGrid<invoiceheader>()
+@(Html.DevExtreme().DataGrid<orderheader>()
     .ShowBorders(true)
     .DataSource(d => d.WebApi()
-        .Controller("Invoices")
-        .LoadAction("Invoices")
-        .Key("ivh_hdrnumber"))
+        .Controller("Orders")
+        .LoadAction("Orders")
+        .Key("ord_number"))
     .LoadPanel(l => l.Enabled(false))
-    .Columns(columns => {
-        columns.AddFor(m => m.ivh_hdrnumber);
-        columns.AddFor(m => m.ivh_invoicestatus);
-        columns.AddFor(m => m.ivh_shipper);
-        columns.AddFor(m => m.ivh_shipdate);
-        columns.AddFor(m => m.ivh_consignee);
-    })
+    .Columns(columns =>
+        {
+            columns.AddFor(m => m.ord_number);
+        columns.AddFor(m => m.ord_bookedby);
+        columns.AddFor(m => m.ord_hdrnumber);
+        columns.AddFor(m => m.ord_refnum);
+        columns.AddFor(m => m.ord_route);
+        })
     .Paging(p => p.PageSize(10))
     .FilterRow(f => f.Visible(true))
     .HeaderFilter(f => f.Visible(true))
@@ -24,7 +25,7 @@
     .RemoteOperations(true)
     .Summary(s => s
         .TotalItems(totalItems => {
-            totalItems.AddFor(m => m.ivh_consignee).SummaryType(SummaryType.Count);
+            totalItems.AddFor(m => m.ord_number).SummaryType(SummaryType.Count);
         })
         .GroupItems(groupItems => {
             groupItems.Add().SummaryType(SummaryType.Count);
@@ -42,7 +43,7 @@
         .Items(items =>
         {
             items.Add()
-                .Title("Invoice Details")
+                .Title("Order Details")
                 .Template(new TemplateName("tab1Content"))
                 .Option("masterGridData", new { id = new JS("data.ivh_hdrnumber") });
 
@@ -57,9 +58,10 @@
     @(Html.DevExtreme().DataGrid<invoicedetail>()
         .ShowBorders(true)
         .DataSource(d => d.WebApi()
-            .Controller("Invoices")
-            .LoadAction("InvoiceDetails")
-            .LoadParams(new {
+            .Controller("Orders")
+            .LoadAction("OrderDetails")
+            .LoadParams(new
+                    {
                 id = new JS("masterGridData.id")
             })
         )
@@ -78,3 +80,4 @@
     )
     )
 }
+

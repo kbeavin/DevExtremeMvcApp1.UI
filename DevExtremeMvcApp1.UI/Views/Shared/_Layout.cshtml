@@ -37,8 +37,9 @@
 
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="active nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/Home/MileageReport" class="nav-link">MileageReport</a></li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "") nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "MileageReport" ? "active" : "") nav-item"><a href="/Home/MileageReport" class="nav-link">MileageReport</a></li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Orders" ? "active" : "") nav-item"><a href="/Home/Orders" class="nav-link">Orders</a></li>
             </ul>
         </div>
     </nav>
@@ -46,6 +47,8 @@
     <main role="main" class="container">
         @RenderBody()
     </main>
+
+    @Html.Partial("_Footer")
 </body>
 
 </html>

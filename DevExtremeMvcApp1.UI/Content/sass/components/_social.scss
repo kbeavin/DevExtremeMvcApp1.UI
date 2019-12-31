@@ -1,0 +1,39 @@
+﻿// set some defaults on icon with placeholder
+%icon-settings {
+    padding-left: 30px;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+// loop over our list & extend our icon settings and output our backgrounds
+@each $link in $social-links {
+    a[href*="#{$link}"] {
+        @extend %icon-settings;
+        background-image: url(/Content/images/social/#{$link}.png);
+    }
+}
+
+// ^^^ this compiles to >>>
+
+// use the "includes" attribute selector generate final css
+//a[href*="facebook"], a[href*="linkedin"], a[href*="twitter"], a[href*="google"] {
+//    padding-left: 20px;
+//    background-repeat: no-repeat;
+//    background-position: left center;
+//}
+//
+//a[href*="facebook"] {
+//    background-image: url(../../images/social/facebook.png);
+//}
+//
+//a[href*="linkedin"] {
+//    background-image: url(../../images/social/linkedin.png);
+//}
+//
+//a[href*="twitter"] {
+//    background-image: url(../../images/social/twitter.png);
+//}
+//
+//a[href*="google"] {
+//    background-image: url(../../images/social/google.png);
+//}

@@ -111,7 +111,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\Cloudy.png" />
+    <Content Include="Content\images\mileage-report\Cloudy.png" />
     <Content Include="Content\dx-diagram.css" />
     <Content Include="Content\dx-diagram.min.css" />
     <Content Include="Content\dx-gantt.css" />
@@ -154,13 +154,17 @@
     <Content Include="Content\dx.material.teal.light.css" />
     <Content Include="Content\dx.softblue.compact.css" />
     <Content Include="Content\dx.softblue.css" />
-    <Content Include="Content\images\PartlyCloudy.png" />
-    <Content Include="Content\images\Rain.png" />
+    <Content Include="Content\images\mileage-report\PartlyCloudy.png" />
+    <Content Include="Content\images\mileage-report\Rain.png" />
+    <Content Include="Content\images\social\facebook.png" />
+    <Content Include="Content\images\social\google.png" />
+    <Content Include="Content\images\social\linkedin.png" />
+    <Content Include="Content\images\social\twitter.png" />
     <Content Include="Content\main\main.css" />
     <Content Include="Content\main\main.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\images\Sunny.png" />
-    <Content Include="Content\images\Storm.png" />
+    <Content Include="Content\images\mileage-report\Sunny.png" />
+    <Content Include="Content\images\mileage-report\Storm.png" />
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
@@ -214,18 +218,16 @@
     <Content Include="Data\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\images\US dotted map.ai" />
+    <Content Include="Content\images\mileage-report\US dotted map.ai" />
     <Content Include="Content\sass\base\_base.scss" />
     <Content Include="Content\sass\base\_variables.scss" />
-    <Content Include="Content\sass\components\_filter.scss" />
-    <Content Include="Content\sass\components\_indicator.scss" />
     <Content Include="Content\sass\components\_lib_overrides.scss" />
-    <Content Include="Content\sass\components\_printpreview.scss" />
     <Content Include="Content\sass\main.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\sass\components\_social.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -270,6 +272,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\MileageReport.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -348,6 +352,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MileageReportController.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Data\accessory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -6544,6 +6549,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Orders\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

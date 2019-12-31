@@ -14,5 +14,10 @@ namespace DevExtremeMvcApp1_UI.Controllers {
         {
             return View();
         }
+
+        public ActionResult Orders()
+        {
+            return View();
+        }
     }
 }
